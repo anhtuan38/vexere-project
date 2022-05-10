@@ -1,5 +1,3 @@
-import { createReducer } from "@reduxjs/toolkit";
-
 import { USER_ACTION } from "../constants";
 
 const initialState = {
@@ -8,45 +6,26 @@ const initialState = {
   },
 };
 
-const userReducer = createReducer(initialState, {
-  // [USER_ACTION.GET_USER_INFO]: (state, action) => {
-  //   return {
-  //     ...state,
-  //     userInfo: {
-  //       ...state.userInfo,
-  //     },
-  //   };
-  // },
-  [USER_ACTION.SIGN_UP]: (state, action) => {
-    return {
-      ...state,
-      userInfo: {
-        ...state.userInfo,
-        data: action.payload,
-      },
-    };
-  },
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case USER_ACTION.SIGN_IN:
+      return {
+        ...state,
+        userInfo: {
+          data: action.payload.data,
+        },
+      };
+    case USER_ACTION.SIGN_OUT:
+      return {
+        ...state,
+        userInfo: {
+          data: {},
+        },
+      };
+    default:
+      return state;
+  }
+}
 
-  [USER_ACTION.SIGN_IN]: (state, action) => {
-    const { data } = action.payload;
-    console.log("🚀 ~ file: user.reducer.js ~ line 32 ~ data", data);
-    return {
-      ...state,
-      userInfo: {
-        ...state.userInfo,
-        data: data.username,
-      },
-    };
-  },
-
-  [USER_ACTION.SIGN_OUT]: (state, action) => {
-    return {
-      ...state,
-      userInfo: {
-        data: {},
-      },
-    };
-  },
-});
-
-export default userReducer;
+export { initialState };
+export default reducer;

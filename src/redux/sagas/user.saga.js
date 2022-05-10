@@ -1,6 +1,8 @@
 import { put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 
+import { openNotificationWithIcon } from "../../helper";
+
 import { USER_ACTION } from "../constants";
 
 function* signInSaga(action) {
@@ -9,11 +11,10 @@ function* signInSaga(action) {
     // const result = yield axios.get("http://localhost:8000/login", data);
     const result = yield axios.get("http://localhost:8000/register");
 
-    result[0].filter(
+    result.filter(
       (user) =>
         user.username === data.username && user.password === data.password
     );
-    result.length ? alert("success") : alert("fair");
 
     // yield localStorage.setItem("accessToken", result.data.accessToken);
     // yield put({
@@ -29,18 +30,30 @@ function* signInSaga(action) {
 
 function* signUpSaga(action) {
   try {
-    const { data } = action.payload;
-    const users = yield axios.get("http://localhost:8000/register") || [];
-    const hasUserName = users.map((user) => user.username === data.username);
+    console.log("asdas");
+    const { data, callback } = action.payload;
+    const users = yield axios.get("http://localhost:8000/users") || [];
 
-    if (!hasUserName) {
-      yield axios.post("http://localhost:8000/register", data);
-      yield put({
-        type: USER_ACTION.SIGN_UP,
+    const hasUserName = users.data.filter(
+      (user) => user.username === data.username
+    );
+
+    if (hasUserName.length === 0) {
+      yield axios.post("http://localhost:8000/users", data);
+      openNotificationWithIcon({
+        type: "success",
+        message: "Đăng ký thành công",
       });
-    } else throw new Error("already exist");
+      callback();
+    } else {
+      openNotificationWithIcon({
+        type: "error",
+        message: "Tài khoản đã tồn tại",
+        description: "Vui lòng chọn tài khoản khác",
+      });
+    }
   } catch (errors) {
-    console.log(errors);
+    // yield put(type: USER_ACTION.SIGN_UP_FAIL, payload: errors);
   }
 }
 

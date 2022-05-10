@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { ROUTERS } from "../../constants/routers";
 
 import Logo from "../../images/icon_vxr_full.svg";
 
 import { signUpAction, signInAction } from "../../redux/actions";
-import { ROUTERS } from "../../constants/routers";
 
 import {
   CaretDownOutlined,
@@ -27,27 +29,23 @@ import {
   Col,
   Menu,
   Dropdown,
+  Avatar,
 } from "antd";
 
 import * as S from "./styles";
 
 function Header(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [formLogin] = Form.useForm();
   const [formRegister] = Form.useForm();
-  // const [modal, contextHolder] = Modal.useModal();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  // const { signUpData } = useSelector((state) => state.userReducer);
 
   const nameUser = JSON.parse(localStorage.getItem("users")) || {};
 
-  // const config = {
-  //   title: "Error",
-  //   content: <p>Đã tồn tại tài khoản</p>,
-  // };
-
+  console.log({ signUpAction });
   const handleLogin = (values) => {
     dispatch(
       signInAction({
@@ -62,6 +60,7 @@ function Header(props) {
     // } else alert("Login fair");
   };
   const handleLogout = () => {};
+
   const handleRegister = (values) => {
     dispatch(
       signUpAction({
@@ -70,6 +69,7 @@ function Header(props) {
           password: values.password,
           confirmPassword: values.confirmPassword,
         },
+        callback: () => setIsLogin(true),
       })
     );
     // const users = JSON.parse(localStorage.getItem("users")) ?? [];
@@ -93,8 +93,8 @@ function Header(props) {
   };
 
   return (
-    <S.Header>
-      <>
+    <S.Container>
+      <S.Header>
         <img src={Logo} alt="photo1" />
         <S.Nav>
           <li>Thuê xe</li>
@@ -112,43 +112,53 @@ function Header(props) {
           </li>
         </S.Nav>
         <Button icon={<PhoneOutlined rotate={90} />}>Hotline</Button>
-        {/* {nameUser.username ? ( */}
-        <Dropdown
-          overlay={
-            <Menu triggerSubMenuAction>
-              <Menu.Item icon={<UserOutlined />}>Thông tin cá nhân</Menu.Item>
-              <Menu.Item icon={<TagOutlined />}>Thành viên thường</Menu.Item>
-              <Menu.Item icon={<HiOutlineTicket />}>Vé của tôi</Menu.Item>
-              <Menu.Item icon={<GiftOutlined />}>Ưu đãi</Menu.Item>
-              <Menu.Item icon={<BiCommentDetail />}>Nhận xét của tôi</Menu.Item>
-              <Menu.Item icon={<CreditCardTwoTone />}>Quản lí thẻ</Menu.Item>
-              <Menu.Item icon={<UserOutlined />} onClick={() => handleLogout()}>
-                Đăng xuất
-              </Menu.Item>
-            </Menu>
-          }
-        >
-          <div style={{ border: "1px solid green", padding: "5px 10px" }}>
-            Hello abcdef{nameUser.username}
-          </div>
-        </Dropdown>
-        {/* ) : (
-        <Button
-          type="primary"
-          icon={
-            <Avatar
-              size="small"
-              style={{
-                marginRight: "10px",
-              }}
-              icon={<UserOutlined />}
-            />
-          }
-          onClick={() => setIsModalVisible(true)}
-        >
-          Đăng nhập
-        </Button> */}
-        {/* )} */}
+        {nameUser.length != 0 ? (
+          <Dropdown
+            overlay={
+              <Menu triggerSubMenuAction>
+                <Menu.Item
+                  icon={<UserOutlined />}
+                  onClick={() => navigate(ROUTERS.USER_INFO)}
+                >
+                  Thông tin cá nhân
+                </Menu.Item>
+                <Menu.Item icon={<TagOutlined />}>Thành viên thường</Menu.Item>
+                <Menu.Item icon={<HiOutlineTicket />}>Vé của tôi</Menu.Item>
+                <Menu.Item icon={<GiftOutlined />}>Ưu đãi</Menu.Item>
+                <Menu.Item icon={<BiCommentDetail />}>
+                  Nhận xét của tôi
+                </Menu.Item>
+                <Menu.Item icon={<CreditCardTwoTone />}>Quản lí thẻ</Menu.Item>
+                <Menu.Item
+                  icon={<UserOutlined />}
+                  onClick={() => handleLogout()}
+                >
+                  Đăng xuất
+                </Menu.Item>
+              </Menu>
+            }
+          >
+            <div style={{ border: "1px solid green", padding: "5px 10px" }}>
+              Hello abcdef{nameUser.username}
+            </div>
+          </Dropdown>
+        ) : (
+          <Button
+            type="primary"
+            icon={
+              <Avatar
+                size="small"
+                style={{
+                  marginRight: "10px",
+                }}
+                icon={<UserOutlined />}
+              />
+            }
+            onClick={() => setIsModalVisible(true)}
+          >
+            Đăng nhập
+          </Button>
+        )}
         <Modal
           title={isLogin ? "Đăng nhập" : "Đăng ký"}
           visible={isModalVisible}
@@ -212,7 +222,6 @@ function Header(props) {
                     type="primary"
                     htmlType="submit"
                     className="login-form-button"
-                    onClick={handleLogin}
                   >
                     Log in
                   </Button>
@@ -322,7 +331,6 @@ function Header(props) {
                     type="primary"
                     htmlType="submit"
                     className="login-form-button"
-                    onClick={handleRegister}
                   >
                     Register Now
                   </Button>
@@ -355,8 +363,8 @@ function Header(props) {
             </>
           )}
         </Modal>
-      </>
-    </S.Header>
+      </S.Header>
+    </S.Container>
   );
 }
 

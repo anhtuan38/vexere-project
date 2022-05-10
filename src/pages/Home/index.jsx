@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 import * as S from "./styles";
 import { Select, Row, Col, DatePicker, Radio, Button } from "antd";
-import {} from "@ant-design/icons";
 
-import { IoLocationSharp } from "react-icons/io5";
+import { POPULAR_ROUTE_TOPIC } from "./home.data";
+
+import CarouselHome from "./components/Carosel.home";
+import NewTopic from "./components/NewTopic";
+import ConnectionSection from "./components/Connection/";
+import Section from "./components/Section";
+import CarStationSection from "./components/CarStation";
 
 function Home(props) {
   function onChange(value) {
@@ -14,6 +19,20 @@ function Home(props) {
   function onSearch(val) {
     console.log("search:", val);
   }
+
+  const renderSection = (values) => {
+    return values.map((item, index) => (
+      <li key={index}>
+        <div>
+          <img style={{ aspectRatio: "16/9" }} src={item.href} alt="photo1" />
+          <div className="describe">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        </div>
+      </li>
+    ));
+  };
 
   return (
     <>
@@ -81,6 +100,32 @@ function Home(props) {
           </Row>
         </Col>
       </S.Container>
+      <S.WrapperContent>
+        <section>
+          <S.Title>Ưu đãi nổi bật</S.Title>
+          <CarouselHome />
+        </section>
+        <section>
+          <S.Title>Tuyến đường phổ biến</S.Title>
+          <S.Ul>{renderSection(POPULAR_ROUTE_TOPIC)}</S.Ul>
+        </section>
+        <section>
+          <S.Title>Bài viết mới nhất của VeXeRe</S.Title>
+          <NewTopic />
+        </section>
+        <section>
+          <S.Title>Nền tảng kết nối người dùng và nhà xe</S.Title>
+          <ConnectionSection />
+        </section>
+        <section>
+          <S.Title>VeXeRe đã được nhắc đến trên</S.Title>
+          <Section />
+        </section>
+        <section>
+          <S.Title>Bến xe khách</S.Title>
+          <CarStationSection />
+        </section>
+      </S.WrapperContent>
     </>
   );
 }

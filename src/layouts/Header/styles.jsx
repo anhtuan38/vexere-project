@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  width: 100%;
+  box-shadow: rgb(0 0 0 / 10%) 0px 3px 5px;
+`;
+
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
   background-color: #fff;
-  width: 100%;
+  margin: 0 auto;
+  max-width: 980px;
 `;
 
 export const Nav = styled.ul`
