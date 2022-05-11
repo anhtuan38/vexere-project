@@ -11,7 +11,7 @@ const ChangeProfile = () => {
     <>
       <S.FormCustom
         name="basic"
-        initialValues={{ remember: true }}
+        initialValues={{ phoneNumber: "0123456789" }}
         onFinish={(values) => handeSubmit(values)}
         onFinishFailed={() => null}
         layout={"vertical"}
@@ -21,18 +21,16 @@ const ChangeProfile = () => {
         </S.FormCustom.Item>
 
         <S.FormCustom.Item label="Số điện thoại" name="phoneNumber">
-          <Input disabled value={"0123.456.789"} />
+          <Input disabled />
         </S.FormCustom.Item>
 
         <S.FormCustom.Item label="Ngày sinh" name="birthday">
           <DatePicker styles={{ width: "100%" }} />
         </S.FormCustom.Item>
-        <Radio.Group
-          defaultValue="male"
-          label="Giới tính"
-          buttonStyle="solid"
-          name="gender"
-        >
+        <div style={{ marginBottom: "5px" }}>
+          <label>Giới tính</label>
+        </div>
+        <Radio.Group defaultValue="male" buttonStyle="solid" name="gender">
           <Radio.Button value="male">Nam</Radio.Button>
           <Radio.Button value="female">Nữ</Radio.Button>
         </Radio.Group>
