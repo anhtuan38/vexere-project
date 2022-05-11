@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-left: 50px;
-  width: 100%;
+  margin: 0 auto;
 `;

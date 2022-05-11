@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import { Breadcrumb } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -40,15 +40,24 @@ function ProfileLayout() {
     getItem("Đăng xuất", "8", <UserOutlined />),
   ];
   const click = (value) => {
-    if (value.key === "1") {
-      navigate(ROUTERS.USER_INFO);
-    }
-    if (value.key === "7") {
-      navigate(ROUTERS.USER_CHANGE_PASSWORD);
-    }
+    value.key === "1" && navigate(ROUTERS.USER_INFO);
+
+    value.key === "3" && navigate(ROUTERS.USER_MY_TICKET);
+
+    value.key === "7" && navigate(ROUTERS.USER_CHANGE_PASSWORD);
+
     if (value.key === "8") {
       // xoa token
       navigate(ROUTERS.HOME);
+    }
+
+    if (
+      value.key !== "1" &&
+      value.key !== "3" &&
+      value.key !== "7" &&
+      value.key !== "8"
+    ) {
+      navigate(ROUTERS.USER_PAGE_UNDEVELOPED);
     }
   };
   return (
@@ -57,14 +66,16 @@ function ProfileLayout() {
       <div className="wrapper">
         <S.Title>
           <Breadcrumb separator=">">
-            <Breadcrumb.Item href="#!" className="link">
-              Trang chủ
+            <Breadcrumb.Item>
+              <Link to={ROUTERS.HOME} className="link">
+                Trang chủ
+              </Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item>Thông tin tài khoản</Breadcrumb.Item>
           </Breadcrumb>
         </S.Title>
         <S.Container>
-          <S.MenuCust
+          <S.MenuCustom
             triggerSubMenuAction
             defaultSelectedKeys={["1"]}
             items={items}

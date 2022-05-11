@@ -112,7 +112,7 @@ function Header(props) {
           </li>
         </S.Nav>
         <Button icon={<PhoneOutlined rotate={90} />}>Hotline</Button>
-        {nameUser.length != 0 ? (
+        {nameUser.length !== 0 ? (
           <Dropdown
             overlay={
               <Menu triggerSubMenuAction>
@@ -122,13 +122,42 @@ function Header(props) {
                 >
                   Thông tin cá nhân
                 </Menu.Item>
-                <Menu.Item icon={<TagOutlined />}>Thành viên thường</Menu.Item>
-                <Menu.Item icon={<HiOutlineTicket />}>Vé của tôi</Menu.Item>
-                <Menu.Item icon={<GiftOutlined />}>Ưu đãi</Menu.Item>
-                <Menu.Item icon={<BiCommentDetail />}>
+                <Menu.Item
+                  icon={<TagOutlined />}
+                  onClick={() => navigate(ROUTERS.USER_PAGE_UNDEVELOPED)}
+                >
+                  Thành viên thường
+                </Menu.Item>
+                <Menu.Item
+                  icon={<HiOutlineTicket />}
+                  onClick={() => navigate(ROUTERS.USER_MY_TICKET)}
+                >
+                  Vé của tôi
+                </Menu.Item>
+                <Menu.Item
+                  icon={<GiftOutlined />}
+                  onClick={() => navigate(ROUTERS.USER_PAGE_UNDEVELOPED)}
+                >
+                  Ưu đãi
+                </Menu.Item>
+                <Menu.Item
+                  icon={<CreditCardTwoTone />}
+                  onClick={() => navigate(ROUTERS.USER_PAGE_UNDEVELOPED)}
+                >
+                  Quản lí thẻ
+                </Menu.Item>
+                <Menu.Item
+                  icon={<BiCommentDetail />}
+                  onClick={() => navigate(ROUTERS.USER_PAGE_UNDEVELOPED)}
+                >
                   Nhận xét của tôi
                 </Menu.Item>
-                <Menu.Item icon={<CreditCardTwoTone />}>Quản lí thẻ</Menu.Item>
+                <Menu.Item
+                  icon={<LockOutlined />}
+                  onClick={() => navigate(ROUTERS.USER_CHANGE_PASSWORD)}
+                >
+                  Đổi mật khẩu
+                </Menu.Item>
                 <Menu.Item
                   icon={<UserOutlined />}
                   onClick={() => handleLogout()}
