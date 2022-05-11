@@ -1,30 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useSelector } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { ROUTERS } from "../../constants/routers";
+import { menuItems } from "../../constants/menu";
 
 import Logo from "../../images/icon_vxr_full.svg";
 
-import { signUpAction, signInAction } from "../../redux/actions";
+import { loginAction, registerAction } from "../../redux/actions";
 
 import {
   CaretDownOutlined,
   PhoneOutlined,
   UserOutlined,
   LockOutlined,
-  CreditCardTwoTone,
-  TagOutlined,
-  GiftOutlined,
 } from "@ant-design/icons";
-import { BiCommentDetail } from "react-icons/bi";
-import { HiOutlineTicket } from "react-icons/hi";
+
 import {
   Button,
   Modal,
   Form,
   Input,
-  Checkbox,
   Row,
   Col,
   Menu,
@@ -34,7 +30,7 @@ import {
 
 import * as S from "./styles";
 
-function Header(props) {
+function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formLogin] = Form.useForm();
@@ -43,53 +39,47 @@ function Header(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
 
-  const nameUser = JSON.parse(localStorage.getItem("users")) || {};
+  const nameUser = JSON.parse(localStorage.getItem("user")) || {};
+  // const { userInfo } = useSelector((state) => state.userReducer);
+  // console.log("🚀 ~ file: index.jsx ~ line 47 ~ Header ~ userInfo", userInfo);
 
-  console.log({ signUpAction });
   const handleLogin = (values) => {
     dispatch(
-      signInAction({
+      loginAction({
         data: {
-          username: values.usernameLogin,
+          email: values.emailLogin,
           password: values.passwordLogin,
         },
+        callback: () => setIsModalVisible(false),
       })
     );
-    // if (value.username === a.username && value.password === a.password) {
-    //   alert("Login success");
-    // } else alert("Login fair");
   };
-  const handleLogout = () => {};
 
   const handleRegister = (values) => {
     dispatch(
-      signUpAction({
+      registerAction({
         data: {
-          username: values.username,
-          password: values.password,
-          confirmPassword: values.confirmPassword,
+          email: values.emailRegister,
+          password: values.passwordRegister,
         },
         callback: () => setIsLogin(true),
       })
     );
-    // const users = JSON.parse(localStorage.getItem("users")) ?? [];
-    // const listUser = [
-    //   ...users,
-    //   {
-    //     username: value.username,
-    //     password: value.password,
-    //     confirmPassword: value.confirmPassword,
-    //   },
-    // ];
-    // console.log(listUser);
-    // localStorage.setItem("users", JSON.stringify(listUser));
-    // const hasUserName = listUser.filter(
-    //   (item) => value.username === item.username
-    // );
-    // hasUserName
-    //   ? localStorage.setItem("users", JSON.stringify(value))
-    //   : modal.error(config);
-    // formRegister.resetFields();
+  };
+
+  const handleClick = (value) => {
+    if (value.key === "8") {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("user");
+      navigate(ROUTERS.HOME);
+    }
+
+    console.log(ROUTERS[value.key]?.isDeveloping);
+    if (ROUTERS[value.key]?.isDeveloping) {
+      navigate(ROUTERS.USER_PAGE_UNDEVELOPED.PATH);
+    } else {
+      navigate(ROUTERS[value.key].PATH);
+    }
   };
 
   return (
@@ -112,63 +102,19 @@ function Header(props) {
           </li>
         </S.Nav>
         <Button icon={<PhoneOutlined rotate={90} />}>Hotline</Button>
-        {nameUser.length !== 0 ? (
+        {nameUser.email ? (
           <Dropdown
             overlay={
-              <Menu triggerSubMenuAction>
-                <Menu.Item
-                  icon={<UserOutlined />}
-                  onClick={() => navigate(ROUTERS.USER_INFO)}
-                >
-                  Thông tin cá nhân
-                </Menu.Item>
-                <Menu.Item
-                  icon={<TagOutlined />}
-                  onClick={() => navigate(ROUTERS.USER_PAGE_UNDEVELOPED)}
-                >
-                  Thành viên thường
-                </Menu.Item>
-                <Menu.Item
-                  icon={<HiOutlineTicket />}
-                  onClick={() => navigate(ROUTERS.USER_MY_TICKET)}
-                >
-                  Vé của tôi
-                </Menu.Item>
-                <Menu.Item
-                  icon={<GiftOutlined />}
-                  onClick={() => navigate(ROUTERS.USER_PAGE_UNDEVELOPED)}
-                >
-                  Ưu đãi
-                </Menu.Item>
-                <Menu.Item
-                  icon={<CreditCardTwoTone />}
-                  onClick={() => navigate(ROUTERS.USER_PAGE_UNDEVELOPED)}
-                >
-                  Quản lí thẻ
-                </Menu.Item>
-                <Menu.Item
-                  icon={<BiCommentDetail />}
-                  onClick={() => navigate(ROUTERS.USER_PAGE_UNDEVELOPED)}
-                >
-                  Nhận xét của tôi
-                </Menu.Item>
-                <Menu.Item
-                  icon={<LockOutlined />}
-                  onClick={() => navigate(ROUTERS.USER_CHANGE_PASSWORD)}
-                >
-                  Đổi mật khẩu
-                </Menu.Item>
-                <Menu.Item
-                  icon={<UserOutlined />}
-                  onClick={() => handleLogout()}
-                >
-                  Đăng xuất
-                </Menu.Item>
-              </Menu>
+              <Menu
+                triggerSubMenuAction
+                defaultSelectedKeys={["1"]}
+                items={menuItems}
+                onClick={handleClick}
+              />
             }
           >
             <div style={{ border: "1px solid green", padding: "5px 10px" }}>
-              Hello abcdef{nameUser.username}
+              Hello {nameUser.email}
             </div>
           </Dropdown>
         ) : (
@@ -203,20 +149,20 @@ function Header(props) {
                 initialValues={{
                   remember: true,
                 }}
-                onFinish={(values) => handleLogin(values)}
+                onFinish={handleLogin}
               >
                 <Form.Item
-                  name="usernameLogin"
+                  name="emailLogin"
                   rules={[
                     {
                       required: true,
-                      message: "Please input your Username or SDT!",
+                      message: "Please input your Email!",
                     },
                   ]}
                 >
                   <Input
                     prefix={<UserOutlined className="site-form-item-icon" />}
-                    placeholder="Username or SDT"
+                    placeholder="Email"
                   />
                 </Form.Item>
                 <Form.Item
@@ -235,12 +181,7 @@ function Header(props) {
                   />
                 </Form.Item>
                 <Row>
-                  <Col span={12}>
-                    <Form.Item name="remember" valuePropName="checked" noStyle>
-                      <Checkbox>Remember me</Checkbox>
-                    </Form.Item>
-                  </Col>
-                  <Col span={12} style={{ textAlign: "end" }}>
+                  <Col span={24} style={{ textAlign: "end" }}>
                     <a className="login-form-forgot" href="#!">
                       Forgot password
                     </a>
@@ -290,24 +231,25 @@ function Header(props) {
                 initialValues={{
                   remember: true,
                 }}
-                onFinish={(values) => handleRegister(values)}
+                onFinish={handleRegister}
               >
                 <Form.Item
-                  name="username"
+                  name="emailRegister"
                   rules={[
                     {
                       required: true,
-                      message: "Please input your Username or SDT!",
+                      message: "Please input your Email",
                     },
                   ]}
                 >
                   <Input
+                    type="email"
                     prefix={<UserOutlined className="site-form-item-icon" />}
-                    placeholder="Username or SDT"
+                    placeholder="Please input your Email"
                   />
                 </Form.Item>
                 <Form.Item
-                  name="password"
+                  name="passwordRegister"
                   rules={[
                     {
                       required: true,
@@ -330,7 +272,10 @@ function Header(props) {
                     },
                     ({ getFieldValue }) => ({
                       validator(_, value) {
-                        if (!value || getFieldValue("password") === value) {
+                        if (
+                          !value ||
+                          getFieldValue("passwordRegister") === value
+                        ) {
                           return Promise.resolve();
                         }
                         return Promise.reject(

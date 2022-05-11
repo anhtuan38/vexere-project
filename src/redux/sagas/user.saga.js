@@ -1,79 +1,94 @@
 import { put, takeEvery } from "redux-saga/effects";
-import axios from "axios";
 
 import { openNotificationWithIcon } from "../../helper";
 
-import { USER_ACTION } from "../constants";
+import { FAIL, REQUEST, SUCCESS, USER_ACTION } from "../constants";
+import { authAPI } from "../../Service";
 
-function* signInSaga(action) {
+function* Login(action) {
   try {
-    const { data } = action.payload;
-    // const result = yield axios.get("http://localhost:8000/login", data);
-    const result = yield axios.get("http://localhost:8000/register");
-
-    result.filter(
-      (user) =>
-        user.username === data.username && user.password === data.password
-    );
-
-    // yield localStorage.setItem("accessToken", result.data.accessToken);
-    // yield put({
-    //   type: USER_ACTION.SIGN_IN,
-    //   payload: {
-    //     data: result.data,
-    //   },
-    // });
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-function* signUpSaga(action) {
-  try {
-    console.log("asdas");
     const { data, callback } = action.payload;
-    const users = yield axios.get("http://localhost:8000/users") || [];
-
-    const hasUserName = users.data.filter(
-      (user) => user.username === data.username
-    );
-
-    if (hasUserName.length === 0) {
-      yield axios.post("http://localhost:8000/users", data);
-      openNotificationWithIcon({
-        type: "success",
-        message: "Đăng ký thành công",
-      });
-      callback();
-    } else {
-      openNotificationWithIcon({
-        type: "error",
-        message: "Tài khoản đã tồn tại",
-        description: "Vui lòng chọn tài khoản khác",
-      });
-    }
-  } catch (errors) {
-    // yield put(type: USER_ACTION.SIGN_UP_FAIL, payload: errors);
-  }
-}
-
-function* getUserInfoSaga(action) {
-  try {
-    const { id } = action.payload;
-    const result = yield axios.get(`http://localhost:8000/users/${id}`);
+    const response = yield authAPI.login(data);
+    console.log(response.data);
     yield put({
-      type: USER_ACTION.GET_USER_INFO,
-      payload: {
-        data: result.data,
-      },
+      type: SUCCESS(USER_ACTION.SIGN_IN),
+      payload: response,
     });
-  } catch (errors) {
-    console.log(errors);
+    yield openNotificationWithIcon({
+      type: "success",
+      message: "Login success!",
+    });
+
+    // if (response.data.user.role === "admin") {
+    //   yield history.push(ROUTER_URL.ADMIN);
+    // } else {
+    //   yield history.push(ROUTER_URL.HOME);
+    // }
+    callback();
+  } catch (e) {
+    yield put({
+      type: FAIL(USER_ACTION.SIGN_IN),
+      payload: e.message,
+    });
+    yield openNotificationWithIcon({
+      type: "error",
+      message: "Login fail!",
+      description: "Incorrect account or password!",
+    });
   }
 }
+
+function* Register(action) {
+  try {
+    const { data, callback } = action.payload;
+
+    const response = yield authAPI.register(data);
+    console.log(response.data);
+    yield put({
+      type: SUCCESS(USER_ACTION.SIGN_UP),
+      payload: response,
+    });
+    yield openNotificationWithIcon({
+      type: "success",
+      message: "Register success!",
+    });
+    // if (response.data.user.role === "admin") {
+    //   yield history.push(ROUTER_URL.ADMIN);
+    // } else {
+    //   yield history.push(ROUTER_URL.HOME);
+    // }
+    callback();
+  } catch (e) {
+    yield put({
+      type: FAIL(USER_ACTION.SIGN_UP),
+      payload: e.message,
+    });
+    yield openNotificationWithIcon({
+      type: "error",
+      message: "Register fail!",
+      description: "Account already exists! Please use another email!",
+    });
+  }
+}
+
+// function* getUserInfoSaga(action) {
+//   try {
+//     const { id } = action.payload;
+//     const result = yield axios.get(`http://localhost:8000/users/${id}`);
+//     yield put({
+//       type: USER_ACTION.GET_USER_INFO,
+//       payload: {
+//         data: result.data,
+//       },
+//     });
+//   } catch (errors) {
+//     console.log(errors);
+//   }
+// }
 
 export default function* userSaga() {
-  yield takeEvery(USER_ACTION.SIGN_IN, signInSaga);
-  yield takeEvery(USER_ACTION.SIGN_UP, signUpSaga);
-  yield takeEvery(USER_ACTION.GET_USER_INFO, getUserInfoSaga);
+  yield takeEvery(REQUEST(USER_ACTION.SIGN_IN), Login);
+  yield takeEvery(REQUEST(USER_ACTION.SIGN_UP), Register);
+  // yield takeEvery(USER_ACTION.SIGN_UP, signUpSaga);
+  // yield takeEvery(USER_ACTION.GET_USER_INFO, getUserInfoSaga);
 }

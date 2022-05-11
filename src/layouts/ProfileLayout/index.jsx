@@ -1,62 +1,53 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
-
+import React, { useEffect } from "react";
+import {
+  Link,
+  Navigate,
+  Outlet,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { Breadcrumb } from "antd";
-import { useNavigate } from "react-router-dom";
 
 import { ROUTERS } from "../../constants/routers";
-
-import {
-  UserOutlined,
-  IdcardOutlined,
-  TagOutlined,
-  GiftOutlined,
-  LockOutlined,
-} from "@ant-design/icons";
-import { BiCommentDetail } from "react-icons/bi";
-import { HiOutlineTicket } from "react-icons/hi";
+import { menuItems } from "../../constants/menu";
 
 import Header from "../Header";
 import * as S from "./styles";
 
-function ProfileLayout() {
+function ProfileLayout(props) {
+  const location = useLocation();
   const navigate = useNavigate();
-  function getItem(label, key, icon) {
-    return {
-      label,
-      key,
-      icon,
-    };
-  }
+  const token = localStorage.getItem("token");
 
-  const items = [
-    getItem("Thông tin cá nhân", "1", <UserOutlined />),
-    getItem("Thành viên thường", "2", <TagOutlined />),
-    getItem("Vé của tôi", "3", <HiOutlineTicket />),
-    getItem("Ưu đãi", "4", <GiftOutlined />),
-    getItem("Quản lí thẻ", "5", <IdcardOutlined />),
-    getItem("Nhận xét của tôi", "6", <BiCommentDetail />),
-    getItem("Đổi mật khẩu", "7", <LockOutlined />),
-    getItem("Đăng xuất", "8", <UserOutlined />),
-  ];
-  const click = (value) => {
-    value.key === "1" && navigate(ROUTERS.USER_INFO);
+  useEffect(() => {
+    console.log(location.pathname);
+  }, [location.pathname]);
 
-    value.key === "3" && navigate(ROUTERS.USER_MY_TICKET);
+  useEffect(() => {
+    if (!token) {
+      navigate(ROUTERS.HOME);
+    }
+  }, [token]);
 
-    value.key === "7" && navigate(ROUTERS.USER_CHANGE_PASSWORD);
+  const setDefaultKey = () => {
+    const defaultKey = menuItems.find((item) => item.key === location.pathname);
+    return defaultKey ? defaultKey.key : "";
+  };
 
-    if (value.key === "8") {
-      // xoa token
+  const handleClick = (value) => {
+    console.log(
+      "🚀 ~ file: index.jsx ~ line 38 ~ handleClick ~ value",
+      ROUTERS[value.key].PATH
+    );
+    if (value.key === "HOME") {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("user");
       navigate(ROUTERS.HOME);
     }
 
-    if (
-      value.key !== "1" &&
-      value.key !== "3" &&
-      value.key !== "7" &&
-      value.key !== "8"
-    ) {
+    if (ROUTERS[value.key]?.isDeveloping === false) {
+      navigate(ROUTERS[value.key].PATH);
+    } else {
       navigate(ROUTERS.USER_PAGE_UNDEVELOPED);
     }
   };
@@ -77,9 +68,9 @@ function ProfileLayout() {
         <S.Container>
           <S.MenuCustom
             triggerSubMenuAction
-            defaultSelectedKeys={["1"]}
-            items={items}
-            onClick={click}
+            defaultSelectedKeys={setDefaultKey}
+            items={menuItems}
+            onClick={handleClick}
           />
           <Outlet />
         </S.Container>
