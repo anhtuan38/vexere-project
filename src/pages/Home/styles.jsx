@@ -1,3 +1,4 @@
+import { Col, Row } from "antd";
 import styled from "styled-components";
 import imageBackground from "../../images/ha-giang.png";
 
@@ -24,12 +25,17 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 100px;
-  padding: 10px 20px;
-  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  font-weight: bold;
   border: none;
   background-color: #f8ae00;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const WrapperContent = styled.div`
@@ -75,5 +81,32 @@ export const Ul = styled.ul`
     p {
       margin-bottom: 0;
     }
+  }
+`;
+
+export const SearchBookingWrapper = styled(Row)`
+  width: 100%;
+
+  .ant-select {
+    width: 100%;
+  }
+  .ant-picker {
+    width: 100%;
+  }
+`;
+
+export const MainCheckbox = styled(Row)`
+  margin-top: 30px;
+
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+  .ant-btn {
+    margin-left: 15px;
   }
 `;
