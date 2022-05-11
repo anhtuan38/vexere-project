@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Menu } from "antd";
+import { Menu, Form } from "antd";
 export const Container = styled.div`
   max-width: 980px;
   margin: 0 auto;
@@ -15,4 +15,9 @@ export const MenuCust = styled(Menu)`
 `;
 export const Content = styled.div`
   display: flex;
+`;
+
+export const FormCustom = styled(Form)`
+  width: 100%;
+  margin-left: 50px;
 `;

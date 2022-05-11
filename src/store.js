@@ -15,4 +15,6 @@ sagaMiddleware.run(rootSaga);
 
 // render the application
 
+sagaMiddleware.run(rootSaga);
+
 export default store;
