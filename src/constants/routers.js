@@ -1,14 +1,10 @@
 export const ROUTERS = {
-  LOGIN: "/login",
-  USER: {
-    HOME: "/",
-    PRODUCTS: "/products",
-    PRODUCT_DETAIL: "/product/:id",
-    SURVEY: "/survey",
-  },
-  ADMIN: {
-    CREATE_PRODUCT: "/admin/product/create",
-    PRODUCTS: "/admin/products",
-    TODO_LIST: "/admin/todolist",
-  },
+  HOME: "/",
+  SIGN_IN: "/signin",
+  PAGE_FILTER: "/filter",
+
+  USER_INFO: "/user/information",
+  USER_CHANGE_PASSWORD: "/user/change-password",
+  USER_PAGE_UNDEVELOPED: "/user/undeveloped",
+  USER_MY_TICKET: "/user/my-ticket",
 };
