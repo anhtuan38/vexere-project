@@ -7,8 +7,8 @@ export const openNotificationWithIcon = ({ type, message, description }) => {
   });
 };
 
-export const createAction = (type, data = {}) => {
-  return { type, data };
+export const createAction = (type, payload = {}) => {
+  return { type, payload };
 };
 export const createActionSuccess = (type, data = {}) => {
   return { type: `${type}_SUCCESS`, data };

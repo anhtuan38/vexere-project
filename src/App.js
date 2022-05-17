@@ -23,16 +23,16 @@ function App() {
         </Route>
 
         <Route element={<ProfileLayout />}>
-          <Route path={ROUTERS.USER_INFO} element={<ChangeProfile />} />
+          <Route path={ROUTERS.USER_INFO.PATH} element={<ChangeProfile />} />
           <Route
-            path={ROUTERS.USER_CHANGE_PASSWORD}
+            path={ROUTERS.USER_CHANGE_PASSWORD.PATH}
             element={<ChangePassword />}
           />
           <Route
             path={ROUTERS.USER_PAGE_UNDEVELOPED}
             element={<FeatureUpdate />}
           />
-          <Route path={ROUTERS.USER_MY_TICKET} element={<MyTickets />} />
+          <Route path={ROUTERS.USER_MY_TICKET.PATH} element={<MyTickets />} />
         </Route>
       </Routes>
     </>

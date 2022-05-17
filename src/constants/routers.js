@@ -3,8 +3,8 @@ export const ROUTERS = {
   SIGN_IN: "/signin",
   PAGE_FILTER: "/filter",
 
-  USER_INFO: "/user/information",
-  USER_CHANGE_PASSWORD: "/user/change-password",
-  USER_PAGE_UNDEVELOPED: "/user/undeveloped",
-  USER_MY_TICKET: "/user/my-ticket",
+  USER_INFO: { PATH: "/user/information", isDeveloping: false },
+  USER_CHANGE_PASSWORD: { PATH: "/user/change-password", isDeveloping: false },
+  USER_MY_TICKET: { PATH: "/user/my-ticket", isDeveloping: false },
+  USER_PAGE_UNDEVELOPED: "/user/undeveloped/:slug",
 };

@@ -1,64 +1,29 @@
 {
   "users": [
     {
-      "username": "tuan",
-      "password": "123",
-      "confirmPassword": "123",
+      "email": "olivier@mail.com",
+      "password": "$2a$10$G0BA280Oht9k5yM2nPvYAucVKvnkUPU/neT4biy8dyTSrUdEZGvA2",
       "id": 1
     },
     {
-      "username": "tuan",
-      "password": "123",
-      "confirmPassword": "123",
+      "email": "ad@gmail.com",
+      "password": "$2a$10$k9yxWxMyca/plxdtSg3Va.b855yPJDJy1kPb5c1zBGQri3qdzmwqW",
       "id": 2
     },
     {
-      "username": "tuan",
-      "password": "123",
-      "confirmPassword": "123",
+      "email": "ad@gmail.com",
+      "password": "$2a$10$sFLrzmI80tD/xKQdUGrqM.J5HF3cjtc5svERd1hSd1bdgYgfPSO3q",
       "id": 3
     },
     {
-      "username": "tuan",
-      "password": "123",
-      "confirmPassword": "123",
+      "email": "ad1@gmail.com",
+      "password": "$2a$10$nmG0kXeoN5WSas2rEF5ac.SDIMFus2i/.4opqsSv7ARIGSGU6FiLW",
       "id": 4
     },
     {
-      "username": "tuan",
-      "password": "123",
-      "confirmPassword": "123",
+      "email": "ad1@gmail.com",
+      "password": "$2a$10$An3jMRfjFfxPtpNNZK9/fuUmsSUau9li9ENmoA5xCcYDFu1oaoBu.",
       "id": 5
-    },
-    {
-      "username": "tuan",
-      "password": "123",
-      "confirmPassword": "123",
-      "id": 6
-    },
-    {
-      "username": "tuan",
-      "password": "123",
-      "confirmPassword": "123",
-      "id": 7
-    },
-    {
-      "username": "tuan",
-      "password": "123",
-      "confirmPassword": "123",
-      "id": 8
-    },
-    {
-      "username": "tuan",
-      "password": "123",
-      "confirmPassword": "123",
-      "id": 9
-    },
-    {
-      "username": "dungdeptrai",
-      "password": "1",
-      "confirmPassword": "1",
-      "id": 10
     }
   ]
 }
