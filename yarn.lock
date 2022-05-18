@@ -3128,9 +3128,21 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001332, caniuse-lite@^1.0.30001335:
+<<<<<<< HEAD
+<<<<<<< HEAD
   version "1.0.30001340"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001340.tgz#029a2f8bfc025d4820fafbfaa6259fd7778340c7"
   integrity sha512-jUNz+a9blQTQVu4uFcn17uAD8IDizPzQkIKh3LCJfg9BkyIqExYYdyc/ZSlWUSKb8iYiXxKsxbv4zYSvkqjrxw==
+=======
+  version "1.0.30001341"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001341.tgz#59590c8ffa8b5939cf4161f00827b8873ad72498"
+  integrity sha512-2SodVrFFtvGENGCv0ChVJIDQ0KPaS1cg7/qtfMaICgeMolDdo/Z2OD32F0Aq9yl6F4YFwGPBS5AaPqNYiW4PoA==
+>>>>>>> 2c1b742 (update filter and sidebar for filter page)
+=======
+  version "1.0.30001340"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001340.tgz#029a2f8bfc025d4820fafbfaa6259fd7778340c7"
+  integrity sha512-jUNz+a9blQTQVu4uFcn17uAD8IDizPzQkIKh3LCJfg9BkyIqExYYdyc/ZSlWUSKb8iYiXxKsxbv4zYSvkqjrxw==
+>>>>>>> c31c3da (add profile page)
 
 case-sensitive-paths-webpack-plugin@^2.4.0:
   version "2.4.0"
@@ -4654,11 +4666,20 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c31c3da (add profile page)
 filter-obj@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/filter-obj/-/filter-obj-1.1.0.tgz#9b311112bc6c6127a16e016c6c5d7f19e0805c5b"
   integrity sha1-mzERErxsYSehbgFsbF1/GeCAXFs=
 
+<<<<<<< HEAD
+=======
+>>>>>>> 2c1b742 (update filter and sidebar for filter page)
+=======
+>>>>>>> c31c3da (add profile page)
 finalhandler@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.2.0.tgz#7d23fe5731b207b4640e4fcd00aec1f9207a7b32"
@@ -4916,14 +4937,34 @@ glob-to-regexp@^0.4.1:
   integrity sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==
 
 glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
+<<<<<<< HEAD
+<<<<<<< HEAD
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.0.tgz#d15535af7732e02e948f4c41628bd910293f6023"
   integrity sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==
+=======
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.2.tgz#29deb38e1ef90f132d5958abe9c3ee8e87f3c318"
+  integrity sha512-NzDgHDiJwKYByLrL5lONmQFpK/2G78SMMfo+E9CuGlX4IkvfKDsiQSNPwAYxEy+e6p7ZQ3uslSLlwlJcqezBmQ==
+>>>>>>> 2c1b742 (update filter and sidebar for filter page)
+=======
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.0.tgz#d15535af7732e02e948f4c41628bd910293f6023"
+  integrity sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==
+>>>>>>> c31c3da (add profile page)
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
     inherits "2"
+<<<<<<< HEAD
+<<<<<<< HEAD
     minimatch "^3.0.4"
+=======
+    minimatch "^3.1.1"
+>>>>>>> 2c1b742 (update filter and sidebar for filter page)
+=======
+    minimatch "^3.0.4"
+>>>>>>> c31c3da (add profile page)
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
@@ -6683,7 +6724,15 @@ minimatch@3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 minimatch@^3.0.4, minimatch@^3.1.2:
+=======
+minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^3.1.2:
+>>>>>>> 2c1b742 (update filter and sidebar for filter page)
+=======
+minimatch@^3.0.4, minimatch@^3.1.2:
+>>>>>>> c31c3da (add profile page)
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
   integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
@@ -7860,6 +7909,10 @@ qs@6.10.3:
   dependencies:
     side-channel "^1.0.4"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c31c3da (add profile page)
 query-string@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-7.1.1.tgz#754620669db978625a90f635f12617c271a088e1"
@@ -7870,6 +7923,11 @@ query-string@^7.1.1:
     split-on-first "^1.0.0"
     strict-uri-encode "^2.0.0"
 
+<<<<<<< HEAD
+=======
+>>>>>>> 2c1b742 (update filter and sidebar for filter page)
+=======
+>>>>>>> c31c3da (add profile page)
 queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
@@ -9086,11 +9144,20 @@ spdy@^4.0.2:
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c31c3da (add profile page)
 split-on-first@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/split-on-first/-/split-on-first-1.1.0.tgz#f610afeee3b12bce1d0c30425e76398b78249a5f"
   integrity sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw==
 
+<<<<<<< HEAD
+=======
+>>>>>>> 2c1b742 (update filter and sidebar for filter page)
+=======
+>>>>>>> c31c3da (add profile page)
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
@@ -9130,11 +9197,20 @@ steno@^0.4.1:
   dependencies:
     graceful-fs "^4.1.3"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c31c3da (add profile page)
 strict-uri-encode@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
   integrity sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
 
+<<<<<<< HEAD
+=======
+>>>>>>> 2c1b742 (update filter and sidebar for filter page)
+=======
+>>>>>>> c31c3da (add profile page)
 string-convert@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/string-convert/-/string-convert-0.2.1.tgz#6982cc3049fbb4cd85f8b24568b9d9bf39eeff97"

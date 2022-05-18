@@ -93,6 +93,9 @@ export const SearchBookingWrapper = styled(Row)`
   .ant-picker {
     width: 100%;
   }
+  .ant-select-selector {
+    height: 50px;
+  }
 `;
 
 export const MainCheckbox = styled(Row)`

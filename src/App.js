@@ -11,7 +11,7 @@ import FeatureUpdate from "./pages/profile/FeatureUpdate";
 import PrimaryLayout from "./layouts/PrimaryLayout";
 import ProfileLayout from "./layouts/ProfileLayout";
 import MyTickets from "./pages/profile/MyTickets";
-import FilterPage from "./pages/Filter";
+import FilterPage from "./pages/FilterPage";
 
 function App() {
   return (

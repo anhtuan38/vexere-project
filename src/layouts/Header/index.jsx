@@ -44,6 +44,7 @@ function Header() {
   // console.log("🚀 ~ file: index.jsx ~ line 47 ~ Header ~ userInfo", userInfo);
 
   const handleLogin = (values) => {
+    console.log(values);
     dispatch(
       loginAction({
         data: {
