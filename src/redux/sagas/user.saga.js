@@ -9,7 +9,6 @@ function* Login(action) {
   try {
     const { data, callback } = action.payload;
     const response = yield authAPI.login(data);
-    console.log(response.data);
     yield put({
       type: SUCCESS(USER_ACTION.SIGN_IN),
       payload: response,

@@ -7,10 +7,6 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  console.log(
-    "🚀 ~ file: user.reducer.js ~ line 10 ~ reducer ~ action",
-    action.payload
-  );
   switch (action.type) {
     case REQUEST(USER_ACTION.SIGN_IN):
       return {
