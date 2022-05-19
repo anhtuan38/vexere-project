@@ -14,6 +14,7 @@ import Cart from "./pages/Cart";
 import CartLayout from "./layouts/CartLayout";
 import PrimaryLayout from "./layouts/PrimaryLayout";
 import ProfileLayout from "./layouts/ProfileLayout";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         </Route>
         <Route element={<CartLayout />}>
           <Route path={ROUTERS.CART} element={<Cart />} />
+          <Route path={ROUTERS.CHECKOUT} element={<Checkout />} />
         </Route>
 
         <Route element={<ProfileLayout />}>
