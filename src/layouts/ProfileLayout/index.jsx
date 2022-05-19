@@ -1,11 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Link,
-  Navigate,
-  Outlet,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Breadcrumb } from "antd";
 
 import { ROUTERS } from "../../constants/routers";

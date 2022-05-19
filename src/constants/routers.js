@@ -2,6 +2,7 @@ export const ROUTERS = {
   HOME: "/",
   SIGN_IN: "/signin",
   PAGE_FILTER: "/filter",
+  CART: "/cart",
 
   USER_INFO: { PATH: "/user/information", isDeveloping: false },
   USER_CHANGE_PASSWORD: { PATH: "/user/change-password", isDeveloping: false },

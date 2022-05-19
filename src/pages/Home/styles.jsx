@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Row } from "antd";
 import styled from "styled-components";
 import imageBackground from "../../images/ha-giang.png";
 

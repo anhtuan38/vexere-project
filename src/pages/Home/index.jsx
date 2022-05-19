@@ -1,8 +1,7 @@
 import React from "react";
 
 import * as S from "./styles";
-import { Select, Row, Col, DatePicker, Radio, Button } from "antd";
-import { GoLocation } from "react-icons/go";
+import { Select, Col, DatePicker, Radio, Button } from "antd";
 
 import { POPULAR_ROUTE_TOPIC } from "./home.data";
 
