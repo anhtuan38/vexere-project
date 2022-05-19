@@ -10,9 +10,6 @@ const sagaMiddleware = createSagaMiddleware();
 // mount it on the Store
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
-// then run the saga
-sagaMiddleware.run(rootSaga);
-
 // render the application
 
 sagaMiddleware.run(rootSaga);
