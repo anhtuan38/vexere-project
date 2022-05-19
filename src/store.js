@@ -8,7 +8,7 @@ import { logger } from "./helper";
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 // mount it on the Store
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+const store = createStore(logger(rootReducer), applyMiddleware(sagaMiddleware));
 
 // render the application
 

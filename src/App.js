@@ -4,14 +4,16 @@ import { ROUTERS } from "./constants/routers";
 import "./App.css";
 
 import Home from "./pages/Home";
-import ChangeProfile from "./pages/profile/ChangeProfile";
-import ChangePassword from "./pages/profile/ChangePassword";
-import FeatureUpdate from "./pages/profile/FeatureUpdate";
+import ChangeProfile from "./pages/Profile/ChangeProfile";
+import ChangePassword from "./pages/Profile/ChangePassword";
+import FeatureUpdate from "./pages/Profile/FeatureUpdate";
+import MyTickets from "./pages/Profile/MyTickets";
+import FilterPage from "./pages/Filter";
+import Cart from "./pages/Cart";
 
+import CartLayout from "./layouts/CartLayout";
 import PrimaryLayout from "./layouts/PrimaryLayout";
 import ProfileLayout from "./layouts/ProfileLayout";
-import MyTickets from "./pages/profile/MyTickets";
-import FilterPage from "./pages/Filter";
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
         <Route element={<PrimaryLayout />}>
           <Route path={ROUTERS.HOME} element={<Home />} />
           <Route path={ROUTERS.PAGE_FILTER} element={<FilterPage />} />
+        </Route>
+        <Route element={<CartLayout />}>
+          <Route path={ROUTERS.CART} element={<Cart />} />
         </Route>
 
         <Route element={<ProfileLayout />}>

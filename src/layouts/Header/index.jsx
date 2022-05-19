@@ -1,6 +1,6 @@
-import React, { useState, useSelector } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { ROUTERS } from "../../constants/routers";
 import { menuItems } from "../../constants/menu";
