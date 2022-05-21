@@ -6,7 +6,7 @@ import en from "world_countries_lists/data/countries/en/world.json";
 import * as S from "./styles";
 
 import { BsFillPenFill } from "react-icons/bs";
-import { CloseCircleOutlined } from "@ant-design/icons";
+import { CloseCircleOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import confirm from "antd/lib/modal/confirm";
 
 const Checkout = () => {
@@ -18,7 +18,7 @@ const Checkout = () => {
   function showDeleteConfirm() {
     confirm({
       title: "Bạn có chắc chắn muốn hủy vé không?",
-      icon: <CloseCircleOutlined />,
+      icon: <QuestionCircleOutlined style={{ color: "red" }} />,
       content: "Thao tác này sẽ không khôi phục được !",
       okText: "Có",
       okType: "danger",
@@ -160,7 +160,7 @@ const Checkout = () => {
       >
         Hủy vé
       </S.ButtonCustom>
-      <S.ButtonCustom type="primary">Trở về trang chủ</S.ButtonCustom>
+      <S.ButtonCustom type="primary">Xem ve</S.ButtonCustom>
     </S.Wrapper>
   );
 };

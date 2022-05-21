@@ -8,7 +8,7 @@ import ChangeProfile from "./pages/Profile/ChangeProfile";
 import ChangePassword from "./pages/Profile/ChangePassword";
 import FeatureUpdate from "./pages/Profile/FeatureUpdate";
 import MyTickets from "./pages/Profile/MyTickets";
-import FilterPage from "./pages/Filter";
+import FilterPage from "./pages/FilterPage";
 import Cart from "./pages/Cart";
 
 import CartLayout from "./layouts/CartLayout";
