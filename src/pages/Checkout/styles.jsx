@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Button, Col, Row } from "antd";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -37,8 +37,13 @@ export const RowCustom = styled(Row)`
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+  border-bottom: 1px solid #e8e8e8;
   p {
     margin-bottom: 0px;
     margin-right: 20px;
   }
+`;
+
+export const ButtonCustom = styled(Button)`
+  width: 50%;
 `;

@@ -25,5 +25,46 @@
       "password": "$2a$10$An3jMRfjFfxPtpNNZK9/fuUmsSUau9li9ENmoA5xCcYDFu1oaoBu.",
       "id": 5
     }
+  ],
+  "tickets":[
+    {"id":"1","users":"", "car":"1","status":"cancel"},
+    {"id":"2","users":"", "car":"1","status":"success"},
+    {"id":"4","users":"", "car":"1","status":"success"},
+    {"id":"5","users":"", "car":"1","status":"success"},
+    {"id":"6","users":"", "car":"1","status":"success"},
+    {"id":"7","users":"", "car":"1","status":"success"},
+    {"id":"8","users":"", "car":"1","status":"success"},
+    {"id":"9","users":"", "car":"1","status":"success"},
+    {"id":"10","users":"", "car":"1","status":"success"},
+    {"id":"11","users":"", "car":"1","status":"success"},
+    {"id":"12","users":"", "car":"1","status":"success"},
+    {"id":"13","users":"", "car":"1","status":"success"},
+    {"id":"14","users":"", "car":"1","status":"success"},
+    {"id":"15","users":"", "car":"1","status":"success"},
+    {"id":"16","users":"", "car":"1","status":"success"},
+    {"id":"17","users":"", "car":"1","status":"success"},
+    {"id":"18","users":"", "car":"1","status":"success"},
+    {"id":"19","users":"", "car":"1","status":"success"},
+    {"id":"20","users":"", "car":"1","status":"success"},
+    {"id":"21","users":"", "car":"1","status":"success"},
+    {"id":"22","users":"", "car":"1","status":"success"},
+    {"id":"23","users":"", "car":"1","status":"success"},
+    {"id":"24","users":"", "car":"1","status":"success"},
+    {"id":"25","users":"", "car":"1","status":"success"},
+    {"id":"26","users":"", "car":"1","status":"success"},
+    {"id":"27","users":"", "car":"1","status":"success"},
+    {"id":"28","users":"", "car":"1","status":"success"},
+    {"id":"3","users":"", "car":"1","status":"process"}
+  ],
+  "car":[
+    {
+      "1": "xe 01"
+    },
+    {
+      "2": "xe 02"
+    },
+    {
+      "3": "xe 03"
+    }
   ]
 }
